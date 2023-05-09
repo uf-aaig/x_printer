@@ -1,0 +1,1 @@
+b'Layer_name:\nM5\nNumber_of_shield_gates:\n1\nSize_of_keepout_region:\n4\nM2_pitch:\n0.694\nM3_pitch:\n0.754\nM4_pitch:\n0.698\nM5_pitch:\n0.63\nM6_pitch:\n0.786\nM7_pitch:\n0.718\nM8_pitch:\n0.724\nM2_width:\n0.06\nM3_width:\n0.062\nM4_width:\n0.082\nM5_width:\n0.076\nM6_width:\n0.104\nM7_width:\n0.094\nM8_width:\n0.104\n\n'

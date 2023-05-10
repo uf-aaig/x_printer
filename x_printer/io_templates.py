@@ -3,8 +3,7 @@ import pandas as pd
 import numpy as np 
 import random
 
-import x_printer.spaces as spaces
-
+from .spaces import * 
 
 # Abstract class for defining different types of input files
 class Input_Template(ABC): 
@@ -48,7 +47,6 @@ class Txt_Wrapper(Input_Template):
             # Replace instance text
             for _, var in enumerate(var_names):
                 value = df_params.loc[i][var]  
-                print(f"{var} = {value}")
                 instance = instance.replace(str(var),str(value))
             
             # Save if intended
@@ -75,7 +73,7 @@ class Input_Capsule():
         self.text_wrapper    = Txt_Wrapper(template_path)
 
         # Define parameter space from which to sample 
-        self.var_space       = spaces.Variable_Space(variable_definition_path)
+        self.var_space       = Variable_Space(variable_definition_path)
 
         # Sample parameter variations from parameter space and make set of input files
         vars            = self.var_space.sample(num=num_experiments)

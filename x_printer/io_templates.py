@@ -4,6 +4,7 @@ import numpy as np
 import random
 
 from .spaces import * 
+#test 
 
 # Abstract class for defining different types of input files
 class Input_Template(ABC): 
@@ -61,7 +62,7 @@ class Txt_Wrapper(Input_Template):
     def save(self, instance, save_path):
         # write input parameters
         with open(save_path, "w") as file: 
-            file.write(instance) 
+            file.write(str(instance)) 
 
 
 # class to contain a set experiment input files

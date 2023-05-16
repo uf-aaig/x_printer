@@ -28,7 +28,7 @@ class Txt_Wrapper(Input_Template):
     def __init__(self, text_input_path): 
 
         # Read the parameterized input file
-        with open(text_input_path, "rb") as file: 
+        with open(text_input_path, "r") as file: 
             self.template = str(file.read())
 
     # Make instance of parameter tempalte and populate with values (for each parameter in df)
@@ -60,10 +60,10 @@ class Txt_Wrapper(Input_Template):
 
     # Save file
     def save(self, instance, save_path):
+        
         # write input parameters
         with open(save_path, "w") as file: 
             file.write(str(instance)) 
-
 
 # class to contain a set experiment input files
 class Input_Capsule(): 

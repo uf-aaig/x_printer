@@ -29,11 +29,11 @@ class Variable_Space():
                 vals = [start + inc*i for i in range(int(np.floor((stop-start)/inc))+1)]
                 if vals[len(vals)-1] != stop: 
                     vals.append(stop)
-                self.var_def["var_def"][i] = vals
+                self.var_def.loc["var_def", i] = vals
 
             elif self.var_def["var_format"][i] == "VALUES": 
                 valList = self.var_def["var_def"][i].split(";"); 
-                self.var_def["var_def"][i] = valList
+                self.var_def.loc["var_def", i] = valList
 
     # Get parameter names
     def names(self): 
@@ -127,7 +127,6 @@ class Variable_Space():
         last_digit = int(str(num)[-1])
         if last_digit % 2 == 0:
             num += 10**(-precision)
-            print(10**(-precision))
         return num
 
     def force_even(self, num): 
@@ -135,7 +134,6 @@ class Variable_Space():
         last_digit = int(str(num)[-1])
         if last_digit % 2 == 1:
             num -= 10**(-precision)
-            print(10**(-precision))
         return num
 
     def force_precision(self, num, precision): 

@@ -7,7 +7,6 @@ class Variable_Space():
     def __init__(self, variable_definition_path):
 
         self.var_def   = pd.read_csv(variable_definition_path) 
-
         self.names           = self.var_def["var"].to_list()
         self.var_types       = self.var_def["var_type"].to_list()
         self.conditioned_var = self.var_def["conditional_var"].to_list()
@@ -29,11 +28,13 @@ class Variable_Space():
                 vals = [start + inc*i for i in range(int(np.floor((stop-start)/inc))+1)]
                 if vals[len(vals)-1] != stop: 
                     vals.append(stop)
-                self.var_def.loc["var_def", i] = vals
+                self.var_def.at[i,'var_def'] = vals
 
             elif self.var_def["var_format"][i] == "VALUES": 
                 valList = self.var_def["var_def"][i].split(";"); 
-                self.var_def.loc["var_def", i] = valList
+		if self.var_def["var_type"][i] == "float": 
+			valList = [float(valList[j] for j in range(len(valList))]
+                self.var_def.at[i,'var_def'] = valList
 
     # Get parameter names
     def names(self): 

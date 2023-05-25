@@ -29,11 +29,11 @@ class Variable_Space():
                 if vals[len(vals)-1] != stop: 
                     vals.append(stop)
                 self.var_def.at[i,'var_def'] = vals
-
-            elif self.var_def["var_format"][i] == "VALUES": 
-                valList = self.var_def["var_def"][i].split(";"); 
-		if self.var_def["var_type"][i] == "float": 
-			valList = [float(valList[j] for j in range(len(valList))]
+                
+            elif self.var_def["var_format"][i] == "VALUES":
+                valList = self.var_def["var_def"][i].split(";")
+                if self.var_def["var_type"][i] == "float": 
+                    valList = [float(valList[j]) for j in range(len(valList))]
                 self.var_def.at[i,'var_def'] = valList
 
     # Get parameter names
@@ -107,8 +107,8 @@ class Variable_Space():
                         sample[var] = self.force_precision(sample[var], var_def_subset["precision"].tolist()[0])
 
 
-                    else: 
-                        print("Invalid variable def: Both force even and force odd set True. Doing nothing.")
+
+
 
                 # Check if we have all parameters
                 if len(sample) == len(np.unique(self.names)): 

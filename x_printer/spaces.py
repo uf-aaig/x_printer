@@ -29,11 +29,13 @@ class Variable_Space():
                 vals = [start + inc*i for i in range(int(np.floor((stop-start)/inc))+1)]
                 if vals[len(vals)-1] != stop: 
                     vals.append(stop)
-                self.var_def.loc["var_def", i] = vals
+                self.var_def["var_def"][i] = vals
 
             elif self.var_def["var_format"][i] == "VALUES": 
                 valList = self.var_def["var_def"][i].split(";"); 
-                self.var_def.loc["var_def", i] = valList
+                if self.var_def["var_format"][i] == "float": 
+                    valList = [valList[j] for j in range(len(valList))] 
+                self.var_def["var_def"][i] = valList
 
     # Get parameter names
     def names(self): 
@@ -105,10 +107,6 @@ class Variable_Space():
                     if var_def_subset["force_precision"].tolist()[0]: 
                         sample[var] = self.force_precision(sample[var], var_def_subset["precision"].tolist()[0])
 
-
-                    else: 
-                        print("Invalid variable def: Both force even and force odd set True. Doing nothing.")
-
                 # Check if we have all parameters
                 if len(sample) == len(np.unique(self.names)): 
                     got_all_params = True
@@ -127,6 +125,7 @@ class Variable_Space():
         last_digit = int(str(num)[-1])
         if last_digit % 2 == 0:
             num += 10**(-precision)
+            print(10**(-precision))
         return num
 
     def force_even(self, num): 
@@ -134,6 +133,7 @@ class Variable_Space():
         last_digit = int(str(num)[-1])
         if last_digit % 2 == 1:
             num -= 10**(-precision)
+            print(10**(-precision))
         return num
 
     def force_precision(self, num, precision): 

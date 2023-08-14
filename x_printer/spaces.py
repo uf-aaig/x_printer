@@ -29,17 +29,10 @@ class Variable_Space:
                     vals.append(stop)
                 self.var_def["var_def"][i] = vals
 
-<<<<<<< Updated upstream
-            elif self.var_def["var_format"][i] == "VALUES":
-                valList = self.var_def["var_def"][i].split(";")
-                if self.var_def["var_format"][i] == "float":
-                    valList = [valList[j] for j in range(len(valList))]
-=======
             elif self.var_def["var_format"][i] == "VALUES": 
                 valList = self.var_def["var_def"][i].split(";") 
                 if self.var_def["var_format"][i] == "float": 
                     valList = [float(valList[j]) for j in range(len(valList))] 
->>>>>>> Stashed changes
                 self.var_def["var_def"][i] = valList
 
     # Get parameter names

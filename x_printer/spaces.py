@@ -57,7 +57,7 @@ class Variable_Space:
         if verify_type == "range":
             return sample_list[0] <= val <= sample_list[-1], "var_in_range"
         if verify_type == "list":
-            return val in sample_list[-1], "var_in_list"
+            return val in sample_list, "var_in_list"
         return None, None
 
 
@@ -207,7 +207,7 @@ class Variable_Space:
 
             checks.append(sample_check)
 
-            return samples, checks 
+        return samples, checks 
 
 
 
